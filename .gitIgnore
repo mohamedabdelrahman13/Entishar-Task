@@ -1,0 +1,15 @@
+# Visual Studio files
+.vs/
+*.vscode/
+
+# Build folders
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.vsidx
+
+# Logs
+*.log
