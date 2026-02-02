@@ -26,8 +26,8 @@ namespace Users_CRUD
             builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
             .AddCookie(options =>
             {
-                options.LoginPath = "/User/LoginView";
-                options.LogoutPath = "/User/Logout";
+                options.LoginPath = "/Account/LoginView";
+                options.LogoutPath = "/Account/Logout";
                 options.ExpireTimeSpan = TimeSpan.FromDays(1);
             });
 
@@ -46,12 +46,13 @@ namespace Users_CRUD
             app.UseHttpsRedirection();
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseAuthentication();
+            app.UseAuthorization();  
 
             app.MapStaticAssets();
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}")
+                pattern: "{controller=Account}/{action=LoginView}/{id?}")
                 .WithStaticAssets();
 
             app.Run();

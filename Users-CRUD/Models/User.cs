@@ -19,5 +19,6 @@ namespace Users_CRUD.Models
         public bool IsActive { get; set; } = true;
         [Required(ErrorMessage = "date of birth is required")]
         public DateOnly DateOfBirth { get; set; }
+        public DateTime CreatedDate { get; set; }
     }
 }

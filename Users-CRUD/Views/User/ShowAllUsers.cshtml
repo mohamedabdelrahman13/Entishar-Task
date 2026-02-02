@@ -3,9 +3,6 @@
 @{
     ViewData["Title"] = "All Users";
 }
-
-<h1>View</h1>
-
 <p>
     <a class="btn btn-primary" asp-action="Create" asp-controller="User">New user</a>
 </p>
@@ -16,14 +13,8 @@
                 @Html.DisplayNameFor(model => model.Username)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Password)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.UserFullName)
             </th>
-            @* <th>
-                @Html.DisplayNameFor(model => model.IsActive)
-            </th> *@
             <th>
                 @Html.DisplayNameFor(model => model.DateOfBirth)
             </th>
@@ -37,26 +28,13 @@
                 @Html.DisplayFor(modelItem => item.Username)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Password)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.UserFullName)
             </td>
-            @* <td>
-                @Html.DisplayFor(modelItem => item.IsActive)
-            </td> *@
             <td>
                 @Html.DisplayFor(modelItem => item.DateOfBirth)
             </td>
             <td>
                 <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                @* <a class="btn btn-danger" *@
-                @* asp-action="Delete" 
-                asp-route-id="@item.Id"
-                onclick="return confirm('Do you really want to delete that user?');">
-                        Delete
-                    </a> *@
                     <form asp-action="Delete"
                           asp-controller="User"
                           asp-route-id="@item.Id"

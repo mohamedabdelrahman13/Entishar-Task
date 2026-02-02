@@ -21,7 +21,7 @@ namespace Users_CRUD.Services
             {
                 return new SignInMessage
                 {
-                    message = "invalid Username or password",
+                    message = "Invalid username or password",
                     isSuccessful = false,
                 };
             }

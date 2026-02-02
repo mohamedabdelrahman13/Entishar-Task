@@ -1,12 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using Users_CRUD.Interfaces;
 using Users_CRUD.Models;
 using Users_CRUD.Services;
 using Users_CRUD.ViewModels;
 
+
 namespace Users_CRUD.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
         private readonly IUserServices userService;

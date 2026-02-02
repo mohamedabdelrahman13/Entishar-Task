@@ -7,6 +7,12 @@
 <h1>Login</h1>
 
 <hr />
+@if (TempData["LoginError"] != null)
+{
+    <h4 class="alert alert-danger">
+        @TempData["LoginError"]
+    </h4>
+}
 <div class="row">
     <div class="col-md-4">
         <form asp-action="SaveSignIn" asp-controller="Account">

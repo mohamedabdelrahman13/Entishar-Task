@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -16,20 +17,25 @@ namespace Users_CRUD.Controllers
         {
             this.accountService = AccountService;
         }
+
+        [HttpGet]
+        [AllowAnonymous]
         public IActionResult LoginView()
         {
             return View("Login");  
         }
 
+        [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> SaveSignIn(LoginVM loginVm)
         {
             if (ModelState.IsValid) 
             {
                 var signInResult = accountService.SignInCheck(loginVm);
 
-                if (signInResult.isSuccessful == false)
+                if (!signInResult.isSuccessful)
                 {
-                    ViewBag.Message = signInResult.message;
+                    TempData["LoginError"] = signInResult.message;
                     return RedirectToAction("LoginView", loginVm);
                 }
 
@@ -57,7 +63,7 @@ namespace Users_CRUD.Controllers
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("LoginView");
+            return RedirectToAction("LoginView" , "Account");
         }
 
     }

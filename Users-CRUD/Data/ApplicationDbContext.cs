@@ -9,6 +9,13 @@ namespace Users_CRUD.Data
         {
 
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>()
+                .Property(u => u.CreatedDate)
+                .HasDefaultValueSql("SYSDATETIME()");
+        }
         public DbSet<User> users { get; set; }
     }
 }
